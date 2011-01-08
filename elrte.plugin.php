@@ -2,9 +2,9 @@
 
 $PluginInfo['elRTE'] = array(
 	'Name' => 'elRTE',
-	'Description' => 'elRTE is an open-source WYSIWYG HTML-editor written in JavaScript using jQuery UI.',
-	'Version' => '1.0.0',
-	'Date' => '8 Jan 2011',
+	'Description' => 'Adds a small trigger near textarea (or it\'s label). This trigger allows you transform ANY textarea in the wysiwyg editor (elRTE) with file manager (elFinder).',
+	'Version' => '1.0.3',
+	'Date' => '9 Jan 2011',
 	'Author' => 'Hrusha',
 	'RegisterPermissions' => array(
 		'Plugins.ElRte.Wysiwyg.Allow',
@@ -20,9 +20,6 @@ $PluginInfo['elRTE'] = array(
 );
 
 class ElRtePlugin extends Gdn_Plugin {
-	
-/*	public function __construct() {
-	}*/
 	
 	protected static function LocaleLanguageCode() {
 		$T = preg_split('/[_-]/', Gdn::Locale()->Current());
