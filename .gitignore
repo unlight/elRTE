@@ -1,3 +1,7 @@
 __*
-elfinder-1.1/*
-elrte-1.2/*
+elfinder-*/src/*
+elfinder-*/connectors/python/*
+elfinder-*/js/jquery-*.js
+elrte-*/src/*
+elrte-*/js/jquery-*.js
+.gitignore
