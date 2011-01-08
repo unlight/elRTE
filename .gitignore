@@ -4,4 +4,5 @@ elfinder-*/connectors/python/*
 elfinder-*/js/jquery-*.js
 elrte-*/src/*
 elrte-*/js/jquery-*.js
+elrte-*/images/smileys/*
 .gitignore
