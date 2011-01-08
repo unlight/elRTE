@@ -1,0 +1,78 @@
+span.RteButtonC {
+	margin:0; padding:0; border:0;
+	margin-left: 3px;
+	padding:0px 2px;
+	display: inline !important;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	cursor:pointer;
+}
+
+.RteWrap {
+	position:relative;
+	margin-bottom:3px;
+}
+
+.RteWrap span {
+	top: 13px; left: -16px;
+	position:absolute;
+	border: 1px solid #bbb;
+	-webkit-border-radius: 1px;
+	-moz-border-radius: 1px;
+	border-radius: 1px;
+	cursor:pointer;
+	line-height: 12px;
+	padding:1px;
+	color:#aaa;
+}
+
+/* ============================================================ FIXES FOR DEFAULTS */
+
+li.formatblock div.list div h1,
+li.formatblock div.list div h2,
+li.formatblock div.list div h3,
+li.formatblock div.list div h4,
+li.formatblock div.list div h5,
+li.formatblock div.list div h6 {
+   margin: 0;
+   padding: 0 !important;
+   border: 0;
+   outline: 0;
+   font-weight: inherit;
+   font-style: inherit;
+   background:none;
+   background-color:none;
+   line-height: 100%;
+}
+
+
+.ui-dialog select {
+	padding:0;
+	height:auto !important;
+}
+.el-rte ul {margin:0 !important; padding:0 !important; border:0 !important;}
+
+.el-rte .tabsbar .tab {
+	padding-top: 0px !important; 
+	padding-bottom: 0px !important;
+	cursor:pointer;
+}
+
+
+/* ============================================================= OBSOLETE */
+
+/*
+
+
+span.RteButtonB {
+	margin-left: 3px;
+	display: inline !important;
+	height: 16px;
+	width: 16px;
+	border: 1px solid #bbb;
+	position:relative;
+	background:url('logo16.png') top left no-repeat;
+	cursor:pointer;
+}*/
