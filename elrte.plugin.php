@@ -6,12 +6,13 @@ $PluginInfo['elRTE'] = array(
 	'Version' => '1.0.0',
 	'Date' => '8 Jan 2011',
 	'Author' => 'Hrusha',
-	// TODO: Group permissions
 	'RegisterPermissions' => array(
 		'Plugins.ElRte.Wysiwyg.Allow',
 		'Plugins.ElRte.FileManager.Allow',
 		'Plugins.ElRte.FileManager.Root',
+		// TODO: Group permissions
 		//'Plugins.ElRte.FileManager.Group',
+		//'Plugins.ElRte.FileManager.GroupFiles',
 		'Plugins.ElRte.FileManager.Files.Read',
 		'Plugins.ElRte.FileManager.Files.Write',
 		'Plugins.ElRte.FileManager.Files.Remove'
@@ -37,25 +38,32 @@ class ElRtePlugin extends Gdn_Plugin {
 	
 	protected static function GetOptions() {
 		
+		$DS = DIRECTORY_SEPARATOR;
 		$Options = array();
 		$Defaults = array('read'  => True, 'write' => False, 'rm' => False);
-		$All = array('read'  => True, 'write' => True, 'rm' => True);
 		$DefaultOptions = array(
 			'root' => Null,
 			'tmbDir' => '.thumbnails',
 			'defaults' => $Defaults,
 			'perms' => array()
 		);
-		$DS = DIRECTORY_SEPARATOR;
-		$NowYear = date('Y');
+		// TODO: $CustomPermissions
+		// $All = array('read'  => True, 'write' => True, 'rm' => True);
+/*		$NowYear = date('Y');
 		$CustomPermissions = array(
 			"~$NowYear{$DS}.*~" => $All
-		);
+		);*/
 		
 		$Session = Gdn::Session();
 	
 		if ($Session->CheckPermission('Plugins.ElRte.Wysiwyg.Allow')) {
-			$Options['defaults'] = $All;
+			$Options['defaults'] = $Defaults;
+			$Names = array('Read', 'Write', 'Remove');
+			$Names = array_merge(array_combine($Names, $Names), array('Remove' => 'rm'));
+			foreach ($Names as $Name => $Perm) {
+				$Check = $Session->CheckPermission('Plugins.ElRte.FileManager.Files.'.$Name);
+				$Options['defaults'][strtolower($Perm)] = (bool)$Check;
+			}
 			
 			if ($Session->CheckPermission('Plugins.ElRte.FileManager.Root')) {
 				$Options['root'] = 'uploads';
@@ -88,7 +96,6 @@ class ElRtePlugin extends Gdn_Plugin {
 			
 			$Sender->AddJsFile($this->GetWebResource('elrte.functions.js'));
 			$Sender->AddCssFile($this->GetWebResource('design/elrte.plugin.css'));
-			
 		}
 
 	}
