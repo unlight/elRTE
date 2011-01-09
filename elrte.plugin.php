@@ -2,9 +2,9 @@
 
 $PluginInfo['elRTE'] = array(
 	'Name' => 'elRTE',
-	'Description' => 'Plugin adds a small trigger near textarea (or it\'s label). This trigger allows you transform textarea in the wysiwyg editor (elRTE) with file manager (elFinder).',
-	'Version' => '1.0.5',
-	'Date' => '9 Jan 2011',
+	'Description' => 'Plugin adds a small trigger near textarea (or it\'s label). This trigger allows you transform textarea to a wysiwyg editor (elRTE) with file manager (elFinder).',
+	'Version' => '1.0.6',
+	'Date' => '10 Jan 2011',
 	'Author' => 'Hrusha',
 	'RegisterPermissions' => array(
 		'Plugins.ElRte.Wysiwyg.Allow',

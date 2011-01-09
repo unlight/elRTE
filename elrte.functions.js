@@ -44,24 +44,26 @@ var RtePlugin = {
 		}
 	},
 	
-	AddChunkButtonsToTextarea: function() {
+	StickTextarea: function(index, element) {
 		var self = RtePlugin;
-		var Wrap = $('<span>', {class:'RteWrap'});
-		$("textarea").each(function(index, element){
-			var Id = $(element).attr('id');
-			var label = $('label[for='+Id+']', $(this).parent());
-			// 1. textarea has label
-			if (label.length > 0) {
-				label = label.first();
-				var button = $('<span>', {class:'RteButtonC', html:'Ω'});
-				button.bind('click', self.ClickToggleHandler);
-				label.append(button);
-				return;
-			}
-			// 2. textarea without label
-			$(element).wrap(Wrap);
-			$(element).after($('<span>', {html:'Ω', click: self.ClickToggleHandler}));
-		});
+		var Wrap = $('<span>', {'class':'RteWrap'});
+		var id = $(element).attr('id');
+		var label = $('label[for='+id+']', $(this).parent());
+		// 1. textarea has label
+		if (label.length > 0) {
+			label = label.first();
+			var button = $('<span>', {'class':'RteButtonC', html:'Ω'});
+			button.bind('click', self.ClickToggleHandler);
+			label.append(button);
+			return;
+		}
+		// 2. textarea without label
+		$(element).wrap(Wrap);
+		$(element).after($('<span>', {html:'Ω', click: self.ClickToggleHandler}));
+	},
+	
+	AddChunkButtonsToTextarea: function() {
+		$("textarea").each(RtePlugin.StickTextarea);
 	},
 	
 	AddCustomPanels: function() {
@@ -121,7 +123,6 @@ var RtePlugin = {
 			t.show();
 		}
 	}
-}
-
+};
 
 jQuery(document).ready(RtePlugin.AddChunkButtonsToTextarea);
