@@ -7,7 +7,7 @@ var RtePlugin = {
 		link = $('<link>', {rel: 'stylesheet', type: 'text/css', media: 'screen', charset:'utf-8'});
 		if (webroot) filepath = webroot + '/';
 		filepath += file;
-		filepath = filepath.replace(/\/\//, '/');
+		filepath = filepath.replace(/\/\//, '/').replace(/\/\//, '/');
 		$(link).attr('href', filepath);
 		$('head').append(link);
 	},
@@ -17,7 +17,7 @@ var RtePlugin = {
 		var filepath = '';
 		if (webroot) filepath = webroot + '/';
 		filepath += file;
-		filepath = filepath.replace(/\/\//, '/');
+		filepath = filepath.replace(/\/\//, '/').replace(/\/\//, '/');
 		$(script).attr('src', filepath);
 		$('head').append(script);
 	},
@@ -63,6 +63,8 @@ var RtePlugin = {
 	},
 	
 	AddChunkButtonsToTextarea: function() {
+		// this script does not work in Internet Explorer
+		if ($.browser.msie) return; 
 		$("textarea").each(RtePlugin.StickTextarea);
 	},
 	
@@ -78,6 +80,7 @@ var RtePlugin = {
 	},
 	
 	ClickToggleHandler: function() {
+		if ($.browser.msie) return alert('Sorry, you are using Internet Explorer.');
 		var self = RtePlugin;
 		if (!self.bElRteLoaded) self.LoadElRte();
 		self.AddCustomPanels();

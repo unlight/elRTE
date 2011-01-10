@@ -1,9 +1,14 @@
 <?php if (!defined('APPLICATION')) exit();
 
+// TODO:
+// FIX. SAFARI 3 TRIGGER SLIPPED DOWN FOR TEXTAREA WITHOUT LABEL
+
 $PluginInfo['elRTE'] = array(
 	'Name' => 'elRTE',
-	'Description' => 'Plugin adds a small trigger near textarea (or it\'s label). This trigger allows you transform textarea to a wysiwyg editor (elRTE) with file manager (elFinder).',
-	'Version' => '1.0.6',
+	'Description' => 'Plugin adds a small trigger near textarea (or it\'s label).
+This trigger allows you transform textarea to a wysiwyg editor (elRTE) with file manager (elFinder).
+<strong>This script does not work in Internet Explorer!</strong>',
+	'Version' => '1.1.7',
 	'Date' => '10 Jan 2011',
 	'Author' => 'Hrusha',
 	'RegisterPermissions' => array(
@@ -33,6 +38,9 @@ class ElRtePlugin extends Gdn_Plugin {
 		$FileManager->Run();
 	}
 	
+	/**
+	* 
+	*/
 	protected static function GetOptions() {
 		
 		$DS = DIRECTORY_SEPARATOR;

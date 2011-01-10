@@ -16,7 +16,8 @@ span.RteButtonC {
 }
 
 .RteWrap span {
-	top: 13px; left: -16px;
+	top: 13px; 
+	left: -16px;
 	position:absolute;
 	border: 1px solid #bbb;
 	-webkit-border-radius: 1px;
