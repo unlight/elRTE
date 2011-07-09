@@ -6,8 +6,11 @@ This trigger allows you transform textarea to a wysiwyg editor (elRTE) with file
 CHANGELOG
 =========
 1.2.11 (XX XXX 2011)
-- started changelog
+- changed trigger view, now it is looks as tooltip
 - updated vendor elRTE to 1.3
+- changed loading of jQuery UI / CSS from Google CDN server
+- removed unused files
+- started changelog
 
 1.1.7 (10 Jan 2011)
 - first release
