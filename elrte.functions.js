@@ -99,12 +99,6 @@ jQuery(document).ready(function(){
 		
 	}
 	
-	var ClickToggleHandler = function() {
-		var TextareaId = this.id.substr(12);
-		LoadElRte();		
-		jQuery.doWhen(ElRteLoading, TransformTextArea, {data: TextareaId});
-	}
-	
 	$("textarea").each(function(){
 		var TextareaId = $(this).attr('id');
 		$(this).tipsy({
@@ -120,8 +114,13 @@ jQuery(document).ready(function(){
 		});
 	});
 	
+	// Tooltip-trigger click handler.
 	$('span[id^=elRteTrigger]').livequery(function(){
-		$(this).click(ClickToggleHandler);
+		$(this).click(function() {
+			var TextareaId = this.id.substr(12);
+			LoadElRte();		
+			jQuery.doWhen(ElRteLoading, TransformTextArea, {data: TextareaId});
+		});
 	});
 });
 
