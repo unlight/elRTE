@@ -95,8 +95,8 @@ class ElRtePlugin extends Gdn_Plugin {
 			if ($Session->CheckPermission('Plugins.ElRte.FileManager.Allow')) {
 				$Sender->AddDefinition('FileManagerAllow', 1);
 			}
-			$Sender->AddJsFile('plugins/elRTE/vendors/dowhen/jquery.dowhen.js');
-			$Sender->AddJsFile('plugins/elRTE/vendors/tipsy/jquery.tipsy.js');
+			$Sender->AddJsFile('plugins/elRTE/vendors/dowhen/jquery.dowhen.min.js');
+			$Sender->AddJsFile('plugins/elRTE/vendors/tipsy/jquery.tipsy.min.js');
 			$Sender->AddJsFile('plugins/elRTE/elrte.functions.js');
 			$Sender->AddCssFile('plugins/elRTE/design/elrte.plugin.css');
 		}
