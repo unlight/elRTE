@@ -50,8 +50,8 @@ jQuery(document).ready(function(){
 		var lang = gdn.definition('LocaleLanguageCode', 'en');
 		var RteRoot = gdn.combinePaths(WebRoot, 'plugins/elRTE/vendors/elrte/');
 		var CdnServer = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/';
-		AddCssFile('themes/smoothness/jquery-ui.css', CdnServer);
 		AddJsFile('jquery-ui.min.js', CdnServer);
+		AddCssFile('themes/smoothness/jquery-ui.css', CdnServer);
 		AddCssFile('css/elrte.min.css', RteRoot);
 		AddJsFile('js/elrte.min.js', RteRoot);
 		AddJsFile('js/i18n/elrte.'+lang+'.js', RteRoot);
