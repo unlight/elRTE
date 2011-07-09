@@ -50,9 +50,9 @@ jQuery(document).ready(function(){
 		var lang = gdn.definition('LocaleLanguageCode', 'en');
 		var RteRoot = gdn.combinePaths(WebRoot, 'plugins/elRTE/vendors/elrte/');
 		var CdnServer = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.1/';
-		AddJsFile('jquery-ui.min.js', CdnServer);
 		AddCssFile('themes/smoothness/jquery-ui.css', CdnServer);
 		AddCssFile('css/elrte.min.css', RteRoot);
+		AddJsFile('jquery-ui.min.js', CdnServer);
 		AddJsFile('js/elrte.min.js', RteRoot);
 		AddJsFile('js/i18n/elrte.'+lang+'.js', RteRoot);
 		var elfinder = !!gdn.definition('FileManagerAllow', false);
@@ -70,7 +70,6 @@ jQuery(document).ready(function(){
 	
 	var TransformTextArea = function(TextareaId) {
 		var t = $("#"+TextareaId);
-		//var textarea = t[0];
 		var p = elRTE.prototype.options.panels;
 		// Add custom panels.
 		p.CopyPaste = ['pastetext', 'pasteformattext', 'removeformat', 'docstructure'];
@@ -102,14 +101,10 @@ jQuery(document).ready(function(){
 			$.doWhen(TabsBarReady, function(){
 				var tabsbar = $('.tabsbar', t.parent().parent());
 				var lasttab = $('div.tab', tabsbar).last();
-				//console.log(tabsbar, lasttab);
 				var turnoff = $('<div class="tab turnoff rounded-bottom-7">Turn off</div>').insertAfter(lasttab);
 				turnoff.click(function(){
 					var rte = $(this).parents('div.el-rte')[0];
-					//t.elrte('hide');
-					//t.insertBefore(rte);
 					$(rte).replaceWith(t);
-					//t.elrte('destroy');
 					t.show();
 					//console.log(t);
 					TipsySetTrigger.call(t);
