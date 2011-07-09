@@ -70,6 +70,7 @@ jQuery(document).ready(function(){
 	
 	var TransformTextArea = function(TextareaId) {
 		var t = $("#"+TextareaId);
+		//var textarea = t[0];
 		var p = elRTE.prototype.options.panels;
 		// Add custom panels.
 		p.CopyPaste = ['pastetext', 'pasteformattext', 'removeformat', 'docstructure'];
@@ -86,32 +87,60 @@ jQuery(document).ready(function(){
 		
 		ElRteSettings.height = $(t).height();
 		
-		$(t).unbind();
-		var rte = t.is(':hidden');
-		
-		if (!rte) {
+		t.unbind(); // TODO: FIX ME. LOST AUTOGROW HERE
+
+		if (t.is(':hidden') == false) {
+			
+			// TODO: FIX ME, CANT REENABLE WYSIWYG
 			t.elrte(ElRteSettings);
-		} else { // TODO: FIX ME, CANT RE-ENABLE WYSIWYG
-			t.elrte('updateSource');
-			//$(pp).find('div.el-rte').replaceWith(t);
-			//t.show();
+		
+			// Add tab to tabsbar
+			var TabsBarReady = function() {
+				var tabsbar = $('.tabsbar', t.parent().parent());
+				return !!tabsbar;
+			}
+			$.doWhen(TabsBarReady, function(){
+				var tabsbar = $('.tabsbar', t.parent().parent());
+				var lasttab = $('div.tab', tabsbar).last();
+				//console.log(tabsbar, lasttab);
+				var turnoff = $('<div class="tab turnoff rounded-bottom-7">Turn off</div>').insertAfter(lasttab);
+				turnoff.click(function(){
+					var rte = $(this).parents('div.el-rte')[0];
+					//t.elrte('hide');
+					//t.insertBefore(rte);
+					$(rte).replaceWith(t);
+					//t.elrte('destroy');
+					t.show();
+					//console.log(t);
+					TipsySetTrigger.call(t);
+				});
+			});
 		}
 		
 	}
 	
-	$("textarea").each(function(){
+	var TipsyReady = function(){
+		return (typeof($.fn.tipsy) == 'function');
+	}
+	
+	if (!TipsyReady()) AddJsFile('plugins/elRTE/vendors/tipsy/jquery.tipsy.min.js', WebRoot);
+	var TipsySetTrigger = function() {
 		var TextareaId = $(this).attr('id');
+		//console.log('TipsySetTrigger', this, TextareaId);
 		$(this).tipsy({
 			title: function(){
 				return '<span class="elRteTrigger" id="elRteTrigger'+TextareaId+'">WYSIWYG</span>';
 			},
 			fade: true,
 			html: true,
-			//delayOut: 1111450,
-			//live: false,
 			trigger: 'focus',
-			gravity: $.fn.tipsy.autoWE
+			opacity: 0.5,
+			gravity: $.fn.tipsy.autoWS
 		});
+	}
+	
+	$.doWhen(TipsyReady, function(){
+		$("textarea").each(TipsySetTrigger);		
 	});
 	
 	// Tooltip-trigger click handler.
@@ -122,6 +151,7 @@ jQuery(document).ready(function(){
 			jQuery.doWhen(ElRteLoading, TransformTextArea, {data: TextareaId});
 		});
 	});
+	
 });
 
 // jQuery center.
