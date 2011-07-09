@@ -1,6 +1,6 @@
 <?php if (!defined('APPLICATION')) exit();
 
-require_once dirname(__FILE__).'/elfinder-1.1/connectors/php/elFinder.class.php';
+require_once dirname(__FILE__).'/vendors/elfinder/connectors/php/elFinder.class.php';
 
 class ElFinderFileManager extends elFinder {
 	
@@ -9,6 +9,7 @@ class ElFinderFileManager extends elFinder {
 		$Extension = pathinfo($Result, 4);
 		$Name = pathinfo($Result, 8);
 		$Result = Gdn_Format::Clean($Name) . '.' . Gdn_Format::Clean($Extension);
+		$Result = trim($Result, '.');
 		return $Result;
 	}
 	

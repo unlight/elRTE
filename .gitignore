@@ -1,9 +1,1 @@
 __*
-elfinder-*/src/*
-elfinder-*/connectors/python/*
-elrte-*/src/*
-elrte-*/images/smileys/*
-.gitignore
-
-#elrte-*/js/jquery-*.js
-#elfinder-*/js/jquery-*.js
