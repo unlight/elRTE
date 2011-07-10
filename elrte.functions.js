@@ -1,5 +1,5 @@
 jQuery(document).ready(function(){
-	if ($.browser.msie) return; 
+	if ($.browser.msie) return;
 	if (typeof($.livequery) != 'function') return;
 	
 	var WebRoot = gdn.definition('WebRoot');
@@ -130,8 +130,9 @@ jQuery(document).ready(function(){
 			html: true,
 			trigger: 'focus',
 			opacity: 0.5,
-			gravity: $.fn.tipsy.autoWS
+			gravity: 'se'
 		});
+		// TODO: FIX GRAVITY, FOR ADMIN AND USER
 	}
 	
 	$.doWhen(TipsyReady, function(){
