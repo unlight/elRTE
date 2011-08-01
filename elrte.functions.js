@@ -38,10 +38,12 @@ jQuery(document).ready(function(){
 	}
 	
 	var AddJsFile = function(file, webroot) {
-		var script = $('<script>', {type: 'text/javascript', charset: 'utf-8'});
+		if (typeof(webroot) != 'undefined') file = gdn.combinePaths(webroot, file);
+		$.getScript(file);
+/*		var script = $('<script>', {type: 'text/javascript', charset: 'utf-8'});
 		if (typeof(webroot) != 'undefined') file = gdn.combinePaths(webroot, file);
 		$(script).attr('src', file);
-		$('head').append(script);
+		$('head').append(script);*/
 	}
 	
 	var LoadElRte = function() {
